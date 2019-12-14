@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzq.food.dao.FeedBackDao">
+
+    <select id="selectAll" resultType="FeedBack">
+        SELECT *
+        FROM  feedback
+        WHERE true
+    </select>
+
+    <insert id="insert">
+      INSERT INTO feedback (
+      id,
+      content
+    )
+    VALUES
+      (
+        #{id},
+        #{content}
+      )
+    </insert>
+
+   <delete id="delete">
+       DELETE FROM feedback WHERE id = #{id}
+   </delete>
+
+    <select id="getById" resultType="FeedBack">
+        SELECT *
+        FROM  feedback AS a
+        WHERE a.id = #{id}
+    </select>
+</mapper>

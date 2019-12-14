@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzq.food.dao.FoodContentDao">
+
+    <select id="selectByKeyword" resultType="FoodContent">
+        SELECT *
+        FROM  food_content AS a
+        WHERE a.keyword LIKE CONCAT ('%', #{keyword}, '%')
+    </select>
+
+    <select id="selectAll" resultType="FoodContent">
+        SELECT *
+        FROM  food_content
+        WHERE true
+    </select>
+
+    <insert id="insert">
+      INSERT INTO food_content (
+	  id,
+      keyword,
+      step,
+      url
+    )
+    VALUES
+      (
+	    #{id},
+        #{keyword},
+        #{step},
+        #{url}
+      )
+    </insert>
+
+    <update id="update">
+      UPDATE
+      food_content
+      SET
+	  id = #{id},
+      keyword = #{keyword},
+      step = #{step},
+      url = #{url}
+      WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+       DELETE FROM food_content WHERE id = #{id}
+   </delete>
+
+    <select id="getByKeyword" resultType="FoodContent">
+        SELECT *
+        FROM  food_content AS a
+        WHERE a.keyword = #{keyword}
+    </select>
+
+    <select id="getById" resultType="FoodContent">
+        SELECT *
+        FROM  food_content AS a
+        WHERE a.id = #{id}
+    </select>
+</mapper>
